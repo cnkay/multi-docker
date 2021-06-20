@@ -8,7 +8,7 @@ before_install:
 
 
 script:
-  - docker run -c CI=true cnkay/react-test npm test
+  - docker run -e CI=true cnkay/react-test npm test
 
 after_success:
   - docker build -t cnkay/multi-client ./client
@@ -23,4 +23,3 @@ after_success:
   - docker push cnkay/multi-server
   - docker push cnkay/multi-worker
 
-  
