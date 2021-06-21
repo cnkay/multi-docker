@@ -4,22 +4,22 @@ service:
   - docker
 
 before_install: 
-  - docker build -t cnkay/react-test -f ./client/Dockerfile.dev ./client 
+  - docker build -t cenkay/react-test -f ./client/Dockerfile.dev ./client 
 
 
 script:
-  - docker run -e CI=true cnkay/react-test npm test
+  - docker run -e CI=true cenkay/react-test npm test
 
 after_success:
-  - docker build -t cnkay/multi-client ./client
-  - docker build -t cnkay/multi-nginx ./nginx
-  - docker build -t cnkay/multi-server ./server
-  - docker build -t cnkay/multi-worker ./worker
+  - docker build -t cenkay/multi-client ./client
+  - docker build -t cenkay/multi-nginx ./nginx
+  - docker build -t cenkay/multi-server ./server
+  - docker build -t cenkay/multi-worker ./worker
   # Login to the Docker CLI
   - docker login docker.io -u $DOCKER_ID -p $DOCKER_PASSWORD
   # Take those images and push them to docker hub
-  - docker push cnkay/multi-client
-  - docker push cnkay/multi-nginx
-  - docker push cnkay/multi-server
-  - docker push cnkay/multi-worker
+  - docker push cenkay/multi-client
+  - docker push cenkay/multi-nginx
+  - docker push cenkay/multi-server
+  - docker push cenkay/multi-worker
 
