@@ -16,7 +16,7 @@ after_success:
   - docker build -t cnkay/multi-server ./server
   - docker build -t cnkay/multi-worker ./worker
   # Login to the Docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+  - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
   # Take those images and push them to docker hub
   - docker push cnkay/multi-client
   - docker push cnkay/multi-nginx
